@@ -1,1 +1,6 @@
-<p>category-menu works!</p>
+<nav class="menu" aria-label="Category menu">
+    @for (category of categories; track category.id) {
+    <app-category-menu-item [categoryName]="category.name" (itemClicked)="onItemClicked(category)">
+    </app-category-menu-item>
+    }
+</nav>
