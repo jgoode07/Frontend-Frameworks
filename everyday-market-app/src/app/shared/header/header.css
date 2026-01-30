@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: #111;
+    color: #fff;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.title {
+    font-size: 20px;
+    margin: 0;
+}
+
+.subtitle {
+    margin: 2px 0 0;
+    opacity: 0.8;
+    font-size: 13px;
+}
+
+.banner {
+    height: 56px;
+    border-radius: 12px;
+    object-fit: cover;
+}
