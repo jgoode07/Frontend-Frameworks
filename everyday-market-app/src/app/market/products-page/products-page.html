@@ -1,5 +1,5 @@
 <section class="market">
-    <app-category-menu [categories]="categoryList"></app-category-menu>
+    <app-category-menu [categories]="categoryList" (categorySelected)="onCategorySelected($event)"></app-category-menu>
 
     <section class="content">
         <p>Select a category on the left.</p>

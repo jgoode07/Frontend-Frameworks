@@ -9,7 +9,10 @@ import { CategoryMenu } from '../category-menu/category-menu';
   templateUrl: './products-page.html',
   styleUrl: './products-page.css',
 })
+
 export class ProductsPage {
+
+  // Hard-coded list of categories shown in the menu
   categoryList: Category[] = [
     { id: 1, name: 'Gaming' },
     { id: 2, name: 'Cars' },
@@ -17,4 +20,10 @@ export class ProductsPage {
     { id: 4, name: 'True Crime' },
     { id: 5, name: 'Travel' },
   ];
+
+  // Runs when a category is selected in the child component
+  onCategorySelected(category: Category) {
+    alert(`You selected: ${category.name}`);
+  }
+
 }
