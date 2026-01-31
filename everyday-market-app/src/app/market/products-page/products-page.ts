@@ -25,5 +25,4 @@ export class ProductsPage {
   onCategorySelected(category: Category) {
     alert(`You selected: ${category.name}`);
   }
-
 }
