@@ -27,6 +27,10 @@ export class ProductsPage {
   // Runs when a category is selected in the child component
   onCategorySelected(category: Category) {
     this.selectedCategoryName = category.name;
-    alert(`You selected: ${category.name}`);
+
+    // Display selected category on right at the same time as the alert box
+    setTimeout(() => {
+      alert(`You selected: ${category.name}`);
+    }, 0);
   }
 }
