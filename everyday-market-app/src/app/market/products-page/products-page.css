@@ -22,6 +22,12 @@
 }
 
 .hint {
-    padding: 2rem 1rem;
-    color: #555;
+    margin: 3rem 1rem;
+    color: #333;
+}
+
+.selected {
+    margin: 3rem 1rem;
+    font-size: 1.1rem;
+    color: #0a7c91;
 }

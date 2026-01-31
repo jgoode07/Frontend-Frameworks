@@ -21,8 +21,12 @@ export class ProductsPage {
     { id: 5, name: 'Travel' },
   ];
 
+  // Stores the name of the category that was last selected
+  selectedCategoryName = '';
+
   // Runs when a category is selected in the child component
   onCategorySelected(category: Category) {
+    this.selectedCategoryName = category.name;
     alert(`You selected: ${category.name}`);
   }
 }

@@ -8,6 +8,17 @@
 
     <section class="content">
         <h2 class="panel-title">Everyday Market</h2>
-        <p class="hint">Pick a category from the left to see the alert.</p>
+
+        <!-- Show the selected category after a menu item is clicked -->
+        @if (selectedCategoryName) {
+        <p class="selected">
+            You selected <strong>{{ selectedCategoryName }}</strong>.
+        </p>
+        } @else {
+        <!-- Default message before any category is chosen -->
+        <p class="hint">
+            Pick a category from the left to see the alert.
+        </p>
+        }
     </section>
 </section>
