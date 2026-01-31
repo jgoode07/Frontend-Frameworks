@@ -1,59 +1,116 @@
-# EverydayMarketApp
+# Everyday Market App – Angular Front-End Frameworks  
+**Author: Joe Goode**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+This repository contains the **Everyday Market App**, developed using **modern Angular (v17+) standalone components**. The project demonstrates core front-end framework concepts including component architecture, data binding, event communication, and Angular’s new control flow syntax.
 
-## Development server
+---
 
-To start a local development server, run:
+## Project Overview
 
-```bash
-ng serve
-```
+The Everyday Market App is a simple Angular application that displays a list of categories in a sidebar menu. When a category is selected, an alert is shown and the main content panel updates to reflect the user’s selection.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The application focuses on clean component design, reusable structure, and modern Angular practices.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Features Implemented
 
-```bash
-ng generate component component-name
-```
+### Standalone Component Architecture
+The project uses Angular’s **standalone components** instead of NgModules. Each component explicitly imports its dependencies.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Component Structure
+The application is organized into logical folders:
 
-```bash
-ng generate --help
-```
+- `shared/` – Global UI components (Header)
+- `market/` – Product-related components and models
 
-## Building
+### Components Built
 
-To build the project run:
+#### HeaderComponent
+A global header visible on all pages.
 
-```bash
-ng build
-```
+**Features:**
+- Custom branding and title
+- Custom background styling
+- Logo/favicon integration
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+#### ProductsPageComponent
+The main content page that holds the category menu and content display area.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+**Features:**
+- Hard-coded list of five personal interest categories
+- Uses property binding to pass data to child components
+- Displays a confirmation message when a category is selected
+- Uses Angular 17+ control flow (`@if`) to dynamically update the UI
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+#### CategoryMenuComponent
+A container component responsible for rendering the list of category menu items.
 
-For end-to-end (e2e) testing, run:
+**Features:**
+- Receives category data from parent via `@Input()`
+- Uses Angular’s modern `@for` syntax to loop through categories
+- Listens for events from child components
+- Emits selected category back to the parent using `@Output()` and `EventEmitter`
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+#### CategoryMenuItemComponent
+Represents an individual clickable category.
 
-## Additional Resources
+**Features:**
+- Receives category name via `@Input()`
+- Emits click events using `@Output()`
+- Demonstrates event binding between child and parent components
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## Angular Concepts Demonstrated
+
+- Standalone components
+- Component communication with `@Input()` and `@Output()`
+- EventEmitter for upward data flow
+- Property binding
+- Event binding
+- Angular 17+ control flow syntax (`@for`, `@if`)
+- Basic state management inside a parent component
+
+---
+
+## Styling
+
+The application layout includes:
+
+- A custom branded header
+- Sidebar category navigation
+- Dynamic content panel
+- Google Fonts integration
+- Responsive spacing and layout structure
+
+Styles were written using plain CSS and organized per component.
+
+---
+
+## Technologies Used
+
+- Angular 17+ (Standalone Components)
+- TypeScript
+- HTML5
+- CSS3
+
+---
+
+## Testing
+
+The application was tested using:
+
+- `ng serve` to run the development server
+- Browser interaction testing
+- Verifying:
+  - Category menu renders correctly
+  - Clicking a category triggers an alert
+  - Selected category displays in the content panel
+  - Component communication works properly
