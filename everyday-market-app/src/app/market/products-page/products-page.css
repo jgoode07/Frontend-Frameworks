@@ -1,6 +1,6 @@
 .market {
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 1fr 3fr;
     gap: 1.25rem;
     margin-top: 4rem;
 }
@@ -16,12 +16,12 @@
 .panel-title {
     margin: 0 0 12px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     letter-spacing: 0.05em;
 }
 
 .hint {
-    margin: 0;
+    padding: 2rem 1rem;
     color: #555;
 }
