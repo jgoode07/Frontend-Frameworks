@@ -1,7 +1,13 @@
 <section class="market">
-    <app-category-menu [categories]="categoryList" (categorySelected)="onCategorySelected($event)"></app-category-menu>
+    <aside class="sidebar">
+        <h2 class="panel-title">Categories</h2>
+
+        <app-category-menu [categories]="categoryList"
+            (categorySelected)="onCategorySelected($event)"></app-category-menu>
+    </aside>
 
     <section class="content">
-        <p>Select a category on the left.</p>
+        <h2 class="panel-title">Everyday Market</h2>
+        <p class="hint">Pick a category from the left to see the alert.</p>
     </section>
 </section>

@@ -1,13 +1,22 @@
 .item {
     width: 100%;
-    text-align: left;
+    font-family: "Sigmar One", sans-serif;
+    letter-spacing: .1em;
+    text-align: center;
     padding: 10px 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background: #fff;
     cursor: pointer;
+    /* Indicates it's clickable */
+    transition: transform 0.05s ease, background 0.15s ease;
 }
 
-.item+.item {
-    margin-top: 10px;
+.item:hover {
+    background: #f2f2f2;
+}
+
+/* When clicked, gives impression it's pressed down */
+.item:active {
+    transform: translateY(1px);
 }
