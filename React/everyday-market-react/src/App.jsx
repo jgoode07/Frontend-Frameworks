@@ -1,9 +1,12 @@
-function App() {
+import Header from './Components/Common/Header';
+
+export default function App() {
   return (
     <>
-      <h1>Everyday Market</h1>
+      <Header />
+      <main className="page">
+        {/* ProductsPage */}
+      </main>
     </>
   );
 }
-
-export default App;
