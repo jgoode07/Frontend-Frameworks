@@ -15,36 +15,37 @@ export default function ProductsPage() {
 
     const previewData = {
         'Coffee Gear': [
-            { title: 'French Press', note: 'Quick and easy brew' },
-            { title: 'Grinder', note: 'Better flavour, fresh grounds' },
-            { title: 'Travel Mug', note: 'Hot for the drive' },
-            { title: 'Beans Sampler', note: 'Try a few roasts' },
+            { title: 'French Press', note: 'Quick and easy brew', tag: 'Best seller', price: '$24.99' },
+            { title: 'Grinder', note: 'Better flavour, fresh grounds', tag: 'New', price: '$39.99' },
+            { title: 'Travel Mug', note: 'Hot for the drive', tag: 'On sale', price: '$14.99' },
+            { title: 'Beans Sampler', note: 'Try a few roasts', tag: 'Limited', price: '$19.99' },
         ],
         'Car Accessories': [
-            { title: 'Detail Kit', note: 'Microfibres + spray' },
-            { title: 'Phone Mount', note: 'Clean dash setup' },
-            { title: 'Air Compressor', note: 'Quick top-ups' },
-            { title: 'Car Fragrance', note: 'Not the cheap kind' },
+            { title: 'Detail Kit', note: 'Microfibres + spray', tag: 'Starter', price: '$18.99' },
+            { title: 'Phone Mount', note: 'Clean dash setup', tag: 'Popular', price: '$16.99' },
+            { title: 'Air Compressor', note: 'Quick top-ups', tag: 'Must-have', price: '$29.99' },
+            { title: 'Car Fragrance', note: 'Not the cheap kind', tag: 'Fresh', price: '$7.99' },
         ],
         'Gaming Setup': [
-            { title: 'Headset Stand', note: 'Desk stays clean' },
-            { title: 'Mouse Pad XL', note: 'More control' },
-            { title: 'Controller Dock', note: 'Always charged' },
-            { title: 'LED Strip', note: 'Mood lighting' },
+            { title: 'Headset Stand', note: 'Desk stays clean', tag: 'Clean setup', price: '$12.99' },
+            { title: 'Mouse Pad XL', note: 'More control', tag: 'Smooth', price: '$22.99' },
+            { title: 'Controller Dock', note: 'Always charged', tag: 'Handy', price: '$27.99' },
+            { title: 'LED Strip', note: 'Mood lighting', tag: 'RGB', price: '$15.99' },
         ],
         'Drone Tech': [
-            { title: 'Extra Props', note: 'Always have spares' },
-            { title: 'ND Filters', note: 'Crisper footage' },
-            { title: 'Carry Case', note: 'Grab-and-go' },
-            { title: 'Landing Pad', note: 'Cleaner takeoffs' },
+            { title: 'Extra Props', note: 'Always have spares', tag: 'Backup', price: '$11.99' },
+            { title: 'ND Filters', note: 'Crisper footage', tag: 'Pro', price: '$34.99' },
+            { title: 'Carry Case', note: 'Grab-and-go', tag: 'Travel', price: '$29.99' },
+            { title: 'Landing Pad', note: 'Cleaner takeoffs', tag: 'Outdoor', price: '$17.99' },
         ],
         'Travel Essentials': [
-            { title: 'Packing Cubes', note: 'Organised bag' },
-            { title: 'Power Bank', note: 'No dead phone' },
-            { title: 'Neck Pillow', note: 'Actually comfy' },
-            { title: 'Daypack', note: 'Light carry' },
+            { title: 'Packing Cubes', note: 'Organised bag', tag: 'Organise', price: '$21.99' },
+            { title: 'Power Bank', note: 'No dead phone', tag: 'Charged', price: '$24.99' },
+            { title: 'Neck Pillow', note: 'Actually comfy', tag: 'Comfort', price: '$13.99' },
+            { title: 'Daypack', note: 'Light carry', tag: 'Everyday', price: '$34.99' },
         ],
     };
+
 
     // Runs once when component loads
     useEffect(() => {
@@ -55,8 +56,8 @@ export default function ProductsPage() {
 
     // Runs when a category is clicked
     function handleCategorySelect(categoryName) {
-        console.log('Selected category:', categoryName); // assignment requirement
-        setSelectedCategoryName(categoryName);           // updates UI
+        console.log('Selected category:', categoryName); // Assignment requirement
+        setSelectedCategoryName(categoryName);           // Updates UI
     }
 
 
@@ -77,26 +78,36 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="products__right">
-                    {selectedCategoryName ? (
-                        <div className="preview">
-                            <h3 className="preview__title">{selectedCategoryName}</h3>
-                            <div className="preview__grid">
-                                {(previewData[selectedCategoryName] || []).map((item) => (
-                                    <div key={item.title} className="preview-card">
-                                        <h4 className="preview-card__title">{item.title}</h4>
-                                        <p className="preview-card__note">{item.note}</p>
-                                        <button className="preview-card__btn" type="button">
-                                            Add to cart
-                                        </button>
-                                    </div>
-                                ))}
+                    <div className="products__right-inner">
+                        {selectedCategoryName ? (
+                            <div className="preview">
+                                <h3 className="preview__title">{selectedCategoryName}</h3>
+                                <div className="preview__grid">
+                                    {(previewData[selectedCategoryName] || []).map((item) => (
+                                        <div key={item.title} className="preview-card">
+                                            <div className="preview-card__top">
+                                                <h4 className="preview-card__title">{item.title}</h4>
+                                                <p className="preview-card__note">{item.note}</p>
+                                            </div>
+
+                                            <div className="preview-card__meta">
+                                                <span className="preview-card__tag">{item.tag}</span>
+                                                <span className="preview-card__price">{item.price}</span>
+                                            </div>
+
+                                            <button className="preview-card__btn" type="button">
+                                                Add to cart
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    ) : (
-                        <div className="preview preview--empty">
-                            <p>Select a category to see a preview.</p>
-                        </div>
-                    )}
+                        ) : ( // Else case when no category is selected
+                            <div className="preview preview--empty">
+                                <p>Select a category to see a preview.</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </section>
