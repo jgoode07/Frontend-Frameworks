@@ -40,11 +40,11 @@ body {
 }
 
 .header__logo {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 10px;
+  width: 4rem;
+  height: 4rem;
+  padding: 4px;
+  border-radius: 999px;
   background: #fff;
-  opacity: 0.15;
 }
 
 .header__title {
