@@ -10,9 +10,6 @@ export default function ProductsPage() {
     // Controls loading message
     const [isLoading, setIsLoading] = useState(true);
 
-    // Stores the category the user clicks
-    const [selectedCategoryName, setSelectedCategoryName] = useState('');
-
     // Runs once when component loads
     useEffect(() => {
         loadCategories()
@@ -22,8 +19,7 @@ export default function ProductsPage() {
 
     // Runs when a category is clicked
     function handleCategorySelect(categoryName) {
-        console.log('Selected category:', categoryName); // Assignment requirement
-        setSelectedCategoryName(categoryName);           // Updates message on screen
+        console.log('Selected category:', categoryName);
     }
 
     return (
@@ -33,20 +29,10 @@ export default function ProductsPage() {
             {isLoading ? (
                 <p className="products__status">Loading categories...</p>
             ) : (
-                <>
-                    {/* Category buttons */}
-                    <CategoryMenu
-                        categories={categories}
-                        onCategorySelected={handleCategorySelect}
-                    />
-
-                    {/* Shows selected category */}
-                    {selectedCategoryName && (
-                        <p className="products__selected">
-                            You picked <strong>{selectedCategoryName}</strong>.
-                        </p>
-                    )}
-                </>
+                <CategoryMenu
+                    categories={categories}
+                    onCategorySelected={handleCategorySelect}
+                />
             )}
         </section>
     );
