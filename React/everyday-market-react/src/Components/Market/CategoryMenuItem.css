@@ -8,6 +8,7 @@
     border-radius: 10px;
     border: 1px solid #e5e5e5;
     background: #fff;
+    color: #111;
     cursor: pointer;
     transition: background 0.15s ease, border-color 0.15s ease;
 }
@@ -20,4 +21,9 @@
     background: #111;
     color: #fff;
     border-color: #111;
+}
+
+.menu-item--selected:hover {
+    background: #111;
+    color: #fff;
 }
