@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
+// Regex reference: found on StackOverflow for validating name, phone, and address formats
+const NAME_PATTERN = /^[A-Za-z ]+$/;
+const PHONE_PATTERN = /^\d{10}$/;
+const ADDRESS_PATTERN = /^[A-Za-z0-9 ]+$/;
 
 @Component({
   selector: 'app-register-page',
@@ -14,13 +19,13 @@ export class RegisterPage {
 
   // Main registration form structure
   registrationForm = this.fb.group({
-    name: [''],
-    email: [''],
-    phone: [''],
-    dateOfBirth: [''],
-    streetAddress: [''],
-    province: [''],
-    country: ['Canada'],
-    acceptTerms: [false],
+    name: ['', [Validators.required, Validators.minLength(5), Validators.pattern(NAME_PATTERN)]],
+    email: ['', [Validators.required, Validators.email]],
+    phone: ['', [Validators.required, Validators.pattern(PHONE_PATTERN)]],
+    dateOfBirth: ['', [Validators.required]],
+    streetAddress: ['', [Validators.required, Validators.pattern(ADDRESS_PATTERN)]],
+    province: ['', [Validators.required]],
+    country: ['Canada', [Validators.required]],
+    acceptTerms: [false, [Validators.requiredTrue]],
   });
 }
