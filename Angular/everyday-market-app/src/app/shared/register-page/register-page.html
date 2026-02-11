@@ -1,112 +1,126 @@
-<section class="panel">
-    <h2 class="panel-title">Register</h2>
+<section class="register">
+    <div class="card">
+        <h2 class="panel-title">Register</h2>
 
-    <!-- Reactive registration form -->
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <!-- Reactive registration form -->
+        <form class="form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
-        <!-- Name field -->
-        <label>
-            Name
-            <input type="text" formControlName="name" [class.invalid]="isInvalid('name')" />
-        </label>
-        <!-- Validation messages for Name -->
-        @if (isInvalid('name')) {
-        <p class="error">
-            @if (registrationForm.get('name')?.errors?.['required']) { Name is required. }
-            @if (registrationForm.get('name')?.errors?.['minlength']) { Name must be at least 5 characters. }
-            @if (registrationForm.get('name')?.errors?.['pattern']) { Name can only use letters and spaces. }
-        </p>
-        }
+            <div class="grid">
 
-        <!-- Email field -->
-        <label>
-            Email address
-            <input type="email" formControlName="email" [class.invalid]="isInvalid('email')" />
-        </label>
-        <!-- Validation messages for Email -->
-        @if (isInvalid('email')) {
-        <p class="error">
-            @if (registrationForm.get('email')?.errors?.['required']) { Email is required. }
-            @if (registrationForm.get('email')?.errors?.['email']) { Enter a valid email address. }
-        </p>
-        }
+                <!-- Name field -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" formControlName="name" [class.invalid]="isInvalid('name')" />
+                    <!-- Validation messages for Name -->
+                    @if (isInvalid('name')) {
+                    <p class="error">
+                        @if (registrationForm.get('name')?.errors?.['required']) { Name is required. }
+                        @if (registrationForm.get('name')?.errors?.['minlength']) { Name must be at least 5 characters.
+                        }
+                        @if (registrationForm.get('name')?.errors?.['pattern']) { Name can only use letters and spaces.
+                        }
+                    </p>
+                    }
+                </div>
 
-        <!-- Phone field -->
-        <label>
-            Phone number
-            <input type="tel" formControlName="phone" [class.invalid]="isInvalid('phone')" />
-        </label>
-        <!-- Validation messages for Phone -->
-        @if (isInvalid('phone')) {
-        <p class="error">
-            @if (registrationForm.get('phone')?.errors?.['required']) { Phone number is required. }
-            @if (registrationForm.get('phone')?.errors?.['pattern']) { Phone must be 10 digits. }
-        </p>
-        }
+                <!-- Email field -->
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input id="email" type="email" formControlName="email" [class.invalid]="isInvalid('email')" />
+                    <!-- Validation messages for Email -->
+                    @if (isInvalid('email')) {
+                    <p class="error">
+                        @if (registrationForm.get('email')?.errors?.['required']) { Email is required. }
+                        @if (registrationForm.get('email')?.errors?.['email']) { Enter a valid email address. }
+                    </p>
+                    }
+                </div>
 
-        <!-- Date of Birth field -->
-        <label>
-            Date of birth
-            <input type="date" formControlName="dateOfBirth" [class.invalid]="isInvalid('dateOfBirth')" />
-        </label>
-        @if (isInvalid('dateOfBirth')) {
-        <p class="error">Date of birth is required.</p>
-        }
+                <!-- Phone field -->
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input id="phone" type="tel" formControlName="phone" [class.invalid]="isInvalid('phone')" />
+                    <!-- Validation messages for Phone -->
+                    @if (isInvalid('phone')) {
+                    <p class="error">
+                        @if (registrationForm.get('phone')?.errors?.['required']) { Phone number is required. }
+                        @if (registrationForm.get('phone')?.errors?.['pattern']) { Phone must be 10 digits. }
+                    </p>
+                    }
+                </div>
 
-        <!-- Street Address field -->
-        <label>
-            Street address
-            <input type="text" formControlName="streetAddress" [class.invalid]="isInvalid('streetAddress')" />
-        </label>
-        @if (isInvalid('streetAddress')) {
-        <p class="error">
-            @if (registrationForm.get('streetAddress')?.errors?.['required']) { Street address is required. }
-            @if (registrationForm.get('streetAddress')?.errors?.['pattern']) { Address can use letters, numbers, and
-            spaces only. }
-        </p>
-        }
+                <!-- Date of Birth field -->
+                <div class="form-group">
+                    <label for="dob">Date of birth</label>
+                    <input id="dob" type="date" formControlName="dateOfBirth"
+                        [class.invalid]="isInvalid('dateOfBirth')" />
+                    @if (isInvalid('dateOfBirth')) {
+                    <p class="error">Date of birth is required.</p>
+                    }
+                </div>
 
-        <!-- Province dropdown -->
-        <label>
-            Province
-            <select formControlName="province" [class.invalid]="isInvalid('province')">
-                <option value="">Select a province/territory</option>
-                @for (prov of provinces; track prov) {
-                <option [value]="prov">{{ prov }}</option>
+                <!-- Street Address field -->
+                <div class="form-group span-2">
+                    <label for="streetAddress">Street address</label>
+                    <input id="streetAddress" type="text" formControlName="streetAddress"
+                        [class.invalid]="isInvalid('streetAddress')" />
+                    @if (isInvalid('streetAddress')) {
+                    <p class="error">
+                        @if (registrationForm.get('streetAddress')?.errors?.['required']) { Street address is required.
+                        }
+                        @if (registrationForm.get('streetAddress')?.errors?.['pattern']) { Address can use letters,
+                        numbers, and spaces only. }
+                    </p>
+                    }
+                </div>
+
+                <!-- Province dropdown -->
+                <div class="form-group">
+                    <label for="province">Province</label>
+                    <select id="province" formControlName="province" [class.invalid]="isInvalid('province')">
+                        <option value="">Select a province/territory</option>
+                        @for (prov of provinces; track prov) {
+                        <option [value]="prov">{{ prov }}</option>
+                        }
+                    </select>
+                    @if (isInvalid('province')) {
+                    <p class="error">Province is required.</p>
+                    }
+                </div>
+
+                <!-- Country dropdown -->
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" formControlName="country" [class.invalid]="isInvalid('country')">
+                        @for (ctry of countries; track ctry) {
+                        <option [value]="ctry">{{ ctry }}</option>
+                        }
+                    </select>
+                    @if (isInvalid('country')) {
+                    <p class="error">
+                        @if (registrationForm.get('country')?.errors?.['required']) { Country is required. }
+                        @if (registrationForm.get('country')?.errors?.['canadaOnly']) { You must select Canada to
+                        proceed. }
+                    </p>
+                    }
+                </div>
+
+            </div>
+
+            <div class="form-footer">
+                <!-- Terms and Conditions checkbox -->
+                <label class="checkbox">
+                    <input type="checkbox" formControlName="acceptTerms" />
+                    <span>I accept the Terms &amp; Conditions</span>
+                </label>
+                @if (isInvalid('acceptTerms')) {
+                <p class="error">You must accept the Terms &amp; Conditions.</p>
                 }
-            </select>
-        </label>
-        @if (isInvalid('province')) {
-        <p class="error">Province is required.</p>
-        }
 
-        <!-- Country dropdown -->
-        <label>
-            Country
-            <select formControlName="country" [class.invalid]="isInvalid('country')">
-                @for (ctry of countries; track ctry) {
-                <option [value]="ctry">{{ ctry }}</option>
-                }
-            </select>
-        </label>
-        @if (isInvalid('country')) {
-        <p class="error">
-            @if (registrationForm.get('country')?.errors?.['required']) { Country is required. }
-            @if (registrationForm.get('country')?.errors?.['canadaOnly']) { You must select Canada to proceed. }
-        </p>
-        }
+                <!-- Submit button -->
+                <button class="btn" type="submit" [disabled]="registrationForm.invalid">Submit</button>
+            </div>
 
-        <!-- Terms and Conditions checkbox -->
-        <label class="checkbox">
-            <input type="checkbox" formControlName="acceptTerms" />
-            I accept the Terms &amp; Conditions
-        </label>
-        @if (isInvalid('acceptTerms')) {
-        <p class="error">You must accept the Terms &amp; Conditions.</p>
-        }
-
-        <!-- Submit button -->
-        <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
-
-    </form>
+        </form>
+    </div>
 </section>
