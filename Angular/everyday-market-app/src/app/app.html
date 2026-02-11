@@ -1,5 +1,9 @@
+<!-- Main site header always stays visible -->
 <app-header></app-header>
 
 <main class="page">
-  <app-products-page></app-products-page>
+
+  <!-- Routed components (Register or Products) will render here -->
+  <router-outlet></router-outlet>
+
 </main>

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-
+import { RouterOutlet } from '@angular/router';
 import { Header } from './shared/header/header';
-import { ProductsPage } from './market/products-page/products-page';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Header, ProductsPage],
+  // RouterOutlet allows page content to change without reloading
+  imports: [Header, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
