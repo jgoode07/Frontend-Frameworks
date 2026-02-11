@@ -18,6 +18,14 @@ const ADDRESS_PATTERN = /^[A-Za-z0-9 ]+$/;
 export class RegisterPage {
   private fb = inject(FormBuilder);
 
+  provinces = [
+    'Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador',
+    'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan',
+    'Northwest Territories', 'Nunavut', 'Yukon'
+  ];
+
+  countries = ['Canada', 'United States'];
+
   // Main registration form structure
   registrationForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(5), Validators.pattern(NAME_PATTERN)]],

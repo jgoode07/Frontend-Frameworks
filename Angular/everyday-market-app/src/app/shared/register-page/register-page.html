@@ -1,65 +1,112 @@
 <section class="panel">
     <h2 class="panel-title">Register</h2>
 
+    <!-- Reactive registration form -->
     <form [formGroup]="registrationForm">
+
+        <!-- Name field -->
         <label>
             Name
-            <input type="text" formControlName="name" />
+            <input type="text" formControlName="name" [class.invalid]="isInvalid('name')" />
         </label>
+        <!-- Validation messages for Name -->
+        @if (isInvalid('name')) {
+        <p class="error">
+            @if (registrationForm.get('name')?.errors?.['required']) { Name is required. }
+            @if (registrationForm.get('name')?.errors?.['minlength']) { Name must be at least 5 characters. }
+            @if (registrationForm.get('name')?.errors?.['pattern']) { Name can only use letters and spaces. }
+        </p>
+        }
 
+        <!-- Email field -->
         <label>
             Email address
-            <input type="email" formControlName="email" />
+            <input type="email" formControlName="email" [class.invalid]="isInvalid('email')" />
         </label>
+        <!-- Validation messages for Email -->
+        @if (isInvalid('email')) {
+        <p class="error">
+            @if (registrationForm.get('email')?.errors?.['required']) { Email is required. }
+            @if (registrationForm.get('email')?.errors?.['email']) { Enter a valid email address. }
+        </p>
+        }
 
+        <!-- Phone field -->
         <label>
             Phone number
-            <input type="tel" formControlName="phone" />
+            <input type="tel" formControlName="phone" [class.invalid]="isInvalid('phone')" />
         </label>
+        <!-- Validation messages for Phone -->
+        @if (isInvalid('phone')) {
+        <p class="error">
+            @if (registrationForm.get('phone')?.errors?.['required']) { Phone number is required. }
+            @if (registrationForm.get('phone')?.errors?.['pattern']) { Phone must be 10 digits. }
+        </p>
+        }
 
+        <!-- Date of Birth field -->
         <label>
             Date of birth
-            <input type="date" formControlName="dateOfBirth" />
+            <input type="date" formControlName="dateOfBirth" [class.invalid]="isInvalid('dateOfBirth')" />
         </label>
+        @if (isInvalid('dateOfBirth')) {
+        <p class="error">Date of birth is required.</p>
+        }
 
+        <!-- Street Address field -->
         <label>
             Street address
-            <input type="text" formControlName="streetAddress" />
+            <input type="text" formControlName="streetAddress" [class.invalid]="isInvalid('streetAddress')" />
         </label>
+        @if (isInvalid('streetAddress')) {
+        <p class="error">
+            @if (registrationForm.get('streetAddress')?.errors?.['required']) { Street address is required. }
+            @if (registrationForm.get('streetAddress')?.errors?.['pattern']) { Address can use letters, numbers, and
+            spaces only. }
+        </p>
+        }
 
+        <!-- Province dropdown -->
         <label>
             Province
-            <select formControlName="province">
+            <select formControlName="province" [class.invalid]="isInvalid('province')">
                 <option value="">Select a province/territory</option>
-                <option value="Alberta">Alberta</option>
-                <option value="British Columbia">British Columbia</option>
-                <option value="Manitoba">Manitoba</option>
-                <option value="New Brunswick">New Brunswick</option>
-                <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
-                <option value="Nova Scotia">Nova Scotia</option>
-                <option value="Ontario">Ontario</option>
-                <option value="Prince Edward Island">Prince Edward Island</option>
-                <option value="Quebec">Quebec</option>
-                <option value="Saskatchewan">Saskatchewan</option>
-                <option value="Northwest Territories">Northwest Territories</option>
-                <option value="Nunavut">Nunavut</option>
-                <option value="Yukon">Yukon</option>
+                @for (prov of provinces; track prov) {
+                <option [value]="prov">{{ prov }}</option>
+                }
             </select>
         </label>
+        @if (isInvalid('province')) {
+        <p class="error">Province is required.</p>
+        }
 
+        <!-- Country dropdown -->
         <label>
             Country
-            <select formControlName="country">
-                <option value="Canada">Canada</option>
-                <option value="United States">United States</option>
+            <select formControlName="country" [class.invalid]="isInvalid('country')">
+                @for (ctry of countries; track ctry) {
+                <option [value]="ctry">{{ ctry }}</option>
+                }
             </select>
         </label>
+        @if (isInvalid('country')) {
+        <p class="error">
+            @if (registrationForm.get('country')?.errors?.['required']) { Country is required. }
+            @if (registrationForm.get('country')?.errors?.['canadaOnly']) { You must select Canada to proceed. }
+        </p>
+        }
 
+        <!-- Terms and Conditions checkbox -->
         <label class="checkbox">
             <input type="checkbox" formControlName="acceptTerms" />
             I accept the Terms &amp; Conditions
         </label>
+        @if (isInvalid('acceptTerms')) {
+        <p class="error">You must accept the Terms &amp; Conditions.</p>
+        }
 
+        <!-- Submit button (navigation added later) -->
         <button type="button">Submit</button>
+
     </form>
 </section>
