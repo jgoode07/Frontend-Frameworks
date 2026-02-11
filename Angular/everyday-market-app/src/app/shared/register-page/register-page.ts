@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { canadaOnlyValidator } from '../../validators/register-validators';
 
 // Regex reference: found on StackOverflow for validating name, phone, and address formats
 const NAME_PATTERN = /^[A-Za-z ]+$/;
@@ -25,7 +26,7 @@ export class RegisterPage {
     dateOfBirth: ['', [Validators.required]],
     streetAddress: ['', [Validators.required, Validators.pattern(ADDRESS_PATTERN)]],
     province: ['', [Validators.required]],
-    country: ['Canada', [Validators.required]],
+    country: ['Canada', [Validators.required, canadaOnlyValidator()]],
     acceptTerms: [false, [Validators.requiredTrue]],
   });
 }
