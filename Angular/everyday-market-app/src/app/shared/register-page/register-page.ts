@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { canadaOnlyValidator } from '../../validators/register-validators';
+import { Router } from '@angular/router';
 
 // Regex reference: found on StackOverflow for validating name, phone, and address formats
 const NAME_PATTERN = /^[A-Za-z ]+$/;
@@ -17,6 +18,7 @@ const ADDRESS_PATTERN = /^[A-Za-z0-9 ]+$/;
 })
 export class RegisterPage {
   private fb = inject(FormBuilder);
+  private router = inject(Router);
 
   provinces = [
     'Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador',
@@ -42,5 +44,14 @@ export class RegisterPage {
   isInvalid(controlName: string): boolean {
     const control = this.registrationForm.get(controlName);
     return !!control && control.touched && control.invalid;
+  }
+
+  onSubmit(): void {
+    if (this.registrationForm.invalid) {
+      this.registrationForm.markAllAsTouched();
+      return;
+    }
+
+    this.router.navigate(['/products']);
   }
 }

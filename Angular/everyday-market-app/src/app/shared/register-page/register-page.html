@@ -2,7 +2,7 @@
     <h2 class="panel-title">Register</h2>
 
     <!-- Reactive registration form -->
-    <form [formGroup]="registrationForm">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
 
         <!-- Name field -->
         <label>
@@ -105,8 +105,8 @@
         <p class="error">You must accept the Terms &amp; Conditions.</p>
         }
 
-        <!-- Submit button (navigation added later) -->
-        <button type="button">Submit</button>
+        <!-- Submit button -->
+        <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
 
     </form>
 </section>

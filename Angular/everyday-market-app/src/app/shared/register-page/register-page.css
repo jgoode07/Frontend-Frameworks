@@ -1,0 +1,9 @@
+.invalid {
+    border: 2px solid #d93025;
+}
+
+.error {
+    margin: 6px 0 0;
+    color: #d93025;
+    font-size: 0.9rem;
+}
