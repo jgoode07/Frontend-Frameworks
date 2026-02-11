@@ -1,3 +1,65 @@
 <section class="panel">
     <h2 class="panel-title">Register</h2>
+
+    <form [formGroup]="registrationForm">
+        <label>
+            Name
+            <input type="text" formControlName="name" />
+        </label>
+
+        <label>
+            Email address
+            <input type="email" formControlName="email" />
+        </label>
+
+        <label>
+            Phone number
+            <input type="tel" formControlName="phone" />
+        </label>
+
+        <label>
+            Date of birth
+            <input type="date" formControlName="dateOfBirth" />
+        </label>
+
+        <label>
+            Street address
+            <input type="text" formControlName="streetAddress" />
+        </label>
+
+        <label>
+            Province
+            <select formControlName="province">
+                <option value="">Select a province/territory</option>
+                <option value="Alberta">Alberta</option>
+                <option value="British Columbia">British Columbia</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                <option value="Nova Scotia">Nova Scotia</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Prince Edward Island">Prince Edward Island</option>
+                <option value="Quebec">Quebec</option>
+                <option value="Saskatchewan">Saskatchewan</option>
+                <option value="Northwest Territories">Northwest Territories</option>
+                <option value="Nunavut">Nunavut</option>
+                <option value="Yukon">Yukon</option>
+            </select>
+        </label>
+
+        <label>
+            Country
+            <select formControlName="country">
+                <option value="Canada">Canada</option>
+                <option value="United States">United States</option>
+            </select>
+        </label>
+
+        <label class="checkbox">
+            <input type="checkbox" formControlName="acceptTerms" />
+            I accept the Terms &amp; Conditions
+        </label>
+
+        <button type="button">Submit</button>
+    </form>
 </section>
