@@ -29,4 +29,10 @@ export class RegisterPage {
     country: ['Canada', [Validators.required, canadaOnlyValidator()]],
     acceptTerms: [false, [Validators.requiredTrue]],
   });
+
+  // Helper used by the template to show red borders and messages
+  isInvalid(controlName: string): boolean {
+    const control = this.registrationForm.get(controlName);
+    return !!control && control.touched && control.invalid;
+  }
 }
