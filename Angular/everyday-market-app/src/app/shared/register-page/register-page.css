@@ -1,0 +1,154 @@
+/* Page layout */
+.register {
+    min-height: calc(100vh - 140px);
+    display: grid;
+    place-items: start center;
+    padding: 4rem 1rem;
+}
+
+/* Card container */
+.card {
+    width: 100%;
+    max-width: 820px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem 2rem 3rem 2rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.panel-title {
+    margin: 0 0 2rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Form layout */
+.form {
+    display: grid;
+    gap: 1.25rem;
+}
+
+/* Grid for input fields */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem 1.25rem;
+}
+
+/* Two-column layout on larger screens */
+@media (min-width: 760px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .span-2 {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Field styling */
+.form-group {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #222;
+}
+
+/* Inputs and selects */
+input,
+select {
+    width: 100%;
+    padding: 0.85rem 0.9rem;
+    border: 1.5px solid #b8bdc1;
+    border-radius: 10px;
+    background: #fff;
+    font: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Focus state */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #0584a0;
+    box-shadow: 0 0 0 4px rgba(5, 132, 160, 0.18);
+}
+
+input:hover,
+select:hover {
+    border-color: #024655;
+}
+
+/* Invalid Indicator */
+.invalid {
+    border: 2px solid #d93025;
+}
+
+/* Validation message style */
+.error {
+    margin: 0.25px 0 0;
+    color: #d93025;
+    font-size: 0.9rem;
+}
+
+/* Footer section */
+.form-footer {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Checkbox styling */
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+}
+
+.checkbox input {
+    width: 18px;
+    height: 18px;
+    accent-color: #0584a0;
+}
+
+/* Submit button */
+.btn {
+    width: 100%;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 12px;
+    padding: 0.95rem 1rem;
+    /* My brand colour */
+    background: #0584a0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: transform 0.05s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+/* Hover effect when button is active */
+.btn:hover:not(:disabled) {
+    background: #002e39;
+}
+
+/* Pressed effect when button is clicked */
+.btn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+/* Disabled state: form cannot be submitted */
+.btn:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
