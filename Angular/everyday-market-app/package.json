@@ -1,6 +1,9 @@
 {
   "name": "everyday-market-app",
   "version": "0.0.0",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
